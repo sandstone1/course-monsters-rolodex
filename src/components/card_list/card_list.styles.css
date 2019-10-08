@@ -1,0 +1,48 @@
+
+/* 
+// the 1st container will be for screen sizes less than 500px and this layout will have 1 column
+*/
+.card-list {
+    display               : grid;
+    grid-template-columns : 1fr;
+    grid-gap              : 20px;
+    width                 : 85vw;
+    margin                : 0 auto 20px auto; /* make sure we add some spacing at the botton */
+}
+
+/* 
+// the 2nd container will be for screen sizes between 500px and 1023px and this layout will have
+// 2 columns
+*/
+@media ( min-width : 500px ) {
+
+	.card-list {
+        grid-template-columns : 1fr 1fr;
+    }
+
+}
+
+/* 
+// the 3rd container will be for screen sizes between 1024px and 1199px and this layout will
+// have 3 columns
+*/
+@media ( min-width : 1024px ) {
+
+	.card-list {
+        grid-template-columns : 1fr 1fr 1fr;
+    }
+
+}
+
+
+/* 
+// the 4th container will be for screen sizes equal to and greater than 1200px and this layout
+// will have 4 columns
+*/
+@media ( min-width : 1200px ) {
+
+	.card-list {
+        grid-template-columns : 1fr 1fr 1fr 1fr;
+    }
+
+}
