@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="root">React Not Rendered</div>
+        <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+        <script>
+            // write a second functional component
+            const Person = () => {
+                // if we want multiple elements inside the div, we create an array as the third
+                // element to React.createElement()
+                return React.createElement(
+                    'div',
+                       {},
+                    [
+                        React.createElement( 'h1', {}, 'Yihua' ),
+                        React.createElement( 'p', {}, 'Developer' )
+                    ]
+                );
+            };
+            
+            
+            // write a functional component
+            const App = () => {
+                // react converts jsx to React.createElement() calls
+
+                // first element inside the React.createElement call is any html element, the
+                // second element is an object of any attributes I want to add to my div
+                // ( e.g. class : 'test' ) and the third element inside the
+                // React.createElement is any children we want to nest inside our div 
+                return React.createElement(
+                    'div',
+                       {},
+                    React.createElement( 'h1', {}, 'React is rendered!' ),
+                    React.createElement( Person ),
+                    React.createElement( Person ),
+                    React.createElement( Person )
+                );
+            };
+            
+            // now call ReactDOM.render() and the last 2 elements inside the
+            // React.createElement call are optional and we will leave out the last 2 elements
+            // in the React.createElement call below and then we have to target the element in
+            // our index.html file where we will insert our application
+            // ( i.e. document.getElementById( 'root' ) )
+
+            // now if we refresh the page or file:///Applications/MAMP/htdocs/stoneburyhomes/
+            // misc/udemy/complete_react_developer_in_2019/monsters_rolodex/playground/
+            // lecture44_index.html, we will see " React is rendered! " at the top of the
+            // page
+
+            // after creating the Person functional component, when we refresh the page, we will
+            // see the following:
+            /*
+            React is rendered!
+            Yihua
+            Developer
+
+            Yihua
+            Developer
+
+            Yihua
+            Developer
+            */
+
+            // so now we are using vanilla JavaScript to do the same thing as we were doing before
+            // when we were using jsx and let's take this one step further and go to const Person
+            // above
+            ReactDOM.render( React.createElement( App ), document.getElementById( 'root' ) );
+
+        </script>
+    </body>
+
+</html>

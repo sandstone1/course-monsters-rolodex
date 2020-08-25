@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="root">React Not Rendered</div>
+        <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+        <script>
+            // add props for this example
+            const Person = ( props ) => {
+                return React.createElement(
+                    'div',
+                       {},
+                    [
+                        React.createElement( 'h1', {}, props.name ),
+                        React.createElement( 'p', {}, props.occupation )
+                    ]
+                );
+            };
+
+            // add atttibutes for this example
+            const App = () => {
+                return React.createElement(
+                    'div',
+                       {},
+                    React.createElement( 'h1', {}, 'React is rendered!' ),
+                    React.createElement( Person, { name : 'Yihua',  occupation :  'developer' } ),
+                    React.createElement( Person, { name : 'Andre',  occupation : 'instructor' } ),
+                    React.createElement( Person, { name :   'Ted',  occupation :      'actor' } )
+                );
+            };
+
+            // when we refresh the page, we will see the following:
+            /*
+            React is rendered!
+            Yihua
+            developer
+
+            Andre
+            instructor
+
+            Ted
+            actor
+            */
+            
+            // so with jsx we don't have to continually make React.createElement() calls so jsx
+            // makes our life easier
+
+            ReactDOM.render( React.createElement( App ), document.getElementById( 'root' ) );
+
+        </script>
+    </body>
+
+</html>
